@@ -138,7 +138,7 @@ private:
             if (vx_predicate(tgt, graph)) {
                 add_edge_to_out_graph(vertex_mapping[used_source],
                         vertex_mapping[tgt], prop);
-                update_crossroads(std::begin(prop), std::end(prop), graph);
+                update_crossroads(std::begin(prop)+1, std::end(prop), graph);
             } else {
                 add_crossroad_edges_to_out_graph(used_source, tgt, graph, prop);
             }
@@ -156,7 +156,7 @@ private:
         
         try {
             auto prop = build_edge_property(graph);
-            update_crossroads(std::begin(prop), std::end(prop), graph);
+            update_crossroads(std::begin(prop)+1, std::end(prop), graph);
             return add_edge_to_out_graph(vertex_mapping[used_source], vertex_mapping[tgt], prop);
         } catch (std::runtime_error& e) {
             return false;
